@@ -1,0 +1,7 @@
+C:\Users\Adina\source\repos\Assign5-ConnectToSqlDB\Assign5-ConnectToSqlDB\bin\Debug\Assign5-ConnectToSqlDB.exe.config
+C:\Users\Adina\source\repos\Assign5-ConnectToSqlDB\Assign5-ConnectToSqlDB\bin\Debug\Assign5-ConnectToSqlDB.exe
+C:\Users\Adina\source\repos\Assign5-ConnectToSqlDB\Assign5-ConnectToSqlDB\bin\Debug\Assign5-ConnectToSqlDB.pdb
+C:\Users\Adina\source\repos\Assign5-ConnectToSqlDB\Assign5-ConnectToSqlDB\obj\Debug\Assign5-ConnectToSqlDB.csprojResolveAssemblyReference.cache
+C:\Users\Adina\source\repos\Assign5-ConnectToSqlDB\Assign5-ConnectToSqlDB\obj\Debug\Assign5-ConnectToSqlDB.csproj.CoreCompileInputs.cache
+C:\Users\Adina\source\repos\Assign5-ConnectToSqlDB\Assign5-ConnectToSqlDB\obj\Debug\Assign5-ConnectToSqlDB.exe
+C:\Users\Adina\source\repos\Assign5-ConnectToSqlDB\Assign5-ConnectToSqlDB\obj\Debug\Assign5-ConnectToSqlDB.pdb

@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MCO_368_Asgn5" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=LAPTOP-BV655DPN;Initial Catalog=MCO_368_Asgn5;Integrated Security=True" SettingsObjectName="Assign5_ConnectToSqlDB.Properties.Settings" SettingsPropertyName="MCO_368_Asgn5ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.CUSTOMER" Member="CUSTOMERs">
+    <Type Name="CUSTOMER">
+      <Column Name="CUS_CODE" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CUS_LNAME" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="CUS_FNAME" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="CUS_INITIAL" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="CUS_AREACODE" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="CUS_PHONE" Type="System.String" DbType="Char(8) NOT NULL" CanBeNull="false" />
+      <Column Name="CUS_BALANCE" Type="System.Decimal" DbType="Decimal(9,2)" CanBeNull="true" />
+      <Association Name="CUSTOMER_INVOICE" Member="INVOICEs" ThisKey="CUS_CODE" OtherKey="CUS_CODE" Type="INVOICE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EMP" Member="EMPs">
+    <Type Name="EMP">
+      <Column Name="EMP_NUM" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EMP_TITLE" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="EMP_LNAME" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="EMP_FNAME" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="EMP_INITIAL" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="EMP_DOB" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="EMP_HIRE_DATE" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="EMP_AREACODE" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+      <Column Name="EMP_PHONE" Type="System.String" DbType="Char(8)" CanBeNull="true" />
+      <Column Name="EMP_MGR" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EMPLOYEE" Member="EMPLOYEEs">
+    <Type Name="EMPLOYEE">
+      <Column Name="EMP_NUM" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EMP_TITLE" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="EMP_LNAME" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="EMP_FNAME" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="EMP_INITIAL" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="EMP_DOB" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="EMP_HIRE_DATE" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="EMP_YEARS" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="EMP_AREACODE" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+      <Column Name="EMP_PHONE" Type="System.String" DbType="Char(8)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.INVOICE" Member="INVOICEs">
+    <Type Name="INVOICE">
+      <Column Name="INV_NUMBER" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CUS_CODE" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="INV_DATE" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Association Name="INVOICE_LINE" Member="LINEs" ThisKey="INV_NUMBER" OtherKey="INV_NUMBER" Type="LINE" />
+      <Association Name="CUSTOMER_INVOICE" Member="CUSTOMER" ThisKey="CUS_CODE" OtherKey="CUS_CODE" Type="CUSTOMER" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LINE" Member="LINEs">
+    <Type Name="LINE">
+      <Column Name="INV_NUMBER" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="LINE_NUMBER" Type="System.Decimal" DbType="Decimal(2,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="P_CODE" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="LINE_UNITS" Type="System.Decimal" DbType="Decimal(9,2) NOT NULL" CanBeNull="false" />
+      <Column Name="LINE_PRICE" Type="System.Decimal" DbType="Decimal(9,2) NOT NULL" CanBeNull="false" />
+      <Association Name="INVOICE_LINE" Member="INVOICE" ThisKey="INV_NUMBER" OtherKey="INV_NUMBER" Type="INVOICE" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="PRODUCT_LINE" Member="PRODUCT" ThisKey="P_CODE" OtherKey="P_CODE" Type="PRODUCT" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.P" Member="Ps">
+    <Type Name="P">
+      <Column Name="P_CODE" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="P_DESCRIPT" Type="System.String" DbType="VarChar(35) NOT NULL" CanBeNull="false" />
+      <Column Name="P_INDATE" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="P_QOH" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="P_MIN" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="P_PRICE" Type="System.Decimal" DbType="Decimal(8,2) NOT NULL" CanBeNull="false" />
+      <Column Name="P_DISCOUNT" Type="System.Decimal" DbType="Decimal(5,2) NOT NULL" CanBeNull="false" />
+      <Column Name="V_CODE" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PRODUCT" Member="PRODUCTs">
+    <Type Name="PRODUCT">
+      <Column Name="P_CODE" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="P_DESCRIPT" Type="System.String" DbType="VarChar(35) NOT NULL" CanBeNull="false" />
+      <Column Name="P_INDATE" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="P_QOH" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="P_MIN" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="P_PRICE" Type="System.Decimal" DbType="Decimal(8,2) NOT NULL" CanBeNull="false" />
+      <Column Name="P_DISCOUNT" Type="System.Decimal" DbType="Decimal(5,2) NOT NULL" CanBeNull="false" />
+      <Column Name="V_CODE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="PRODUCT_LINE" Member="LINEs" ThisKey="P_CODE" OtherKey="P_CODE" Type="LINE" />
+      <Association Name="VENDOR_PRODUCT" Member="VENDOR" ThisKey="V_CODE" OtherKey="V_CODE" Type="VENDOR" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V" Member="Vs">
+    <Type Name="V">
+      <Column Name="V_CODE" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="V_NAME" Type="System.String" DbType="VarChar(35) NOT NULL" CanBeNull="false" />
+      <Column Name="V_CONTACT" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="V_AREACODE" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="V_PHONE" Type="System.String" DbType="Char(8) NOT NULL" CanBeNull="false" />
+      <Column Name="V_STATE" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="V_ORDER" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VENDOR" Member="VENDORs">
+    <Type Name="VENDOR">
+      <Column Name="V_CODE" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="V_NAME" Type="System.String" DbType="VarChar(35) NOT NULL" CanBeNull="false" />
+      <Column Name="V_CONTACT" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="V_AREACODE" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="V_PHONE" Type="System.String" DbType="Char(8) NOT NULL" CanBeNull="false" />
+      <Column Name="V_STATE" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="V_ORDER" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Association Name="VENDOR_PRODUCT" Member="PRODUCTs" ThisKey="V_CODE" OtherKey="V_CODE" Type="PRODUCT" />
+    </Type>
+  </Table>
+</Database>
